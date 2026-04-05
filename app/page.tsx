@@ -65,6 +65,11 @@ export default function HomePage() {
       if (popup) {
         popup.style.display = 'flex';
         document.body.style.overflow = 'hidden';
+        
+        // Setup real-time validation when popup opens
+        setTimeout(() => {
+          setupRealTimeValidation();
+        }, 50);
       }
     };
 
@@ -172,6 +177,108 @@ export default function HomePage() {
       }
     }
 
+    // Helper function to clear field errors
+    function clearFieldError(fieldName: string) {
+      const field = document.getElementById(fieldName);
+      const formGroup = field?.closest('.form-group');
+      if (formGroup) {
+        formGroup.classList.remove('error');
+        const existingError = formGroup.querySelector('.error-message');
+        if (existingError) {
+          existingError.remove();
+        }
+      }
+    }
+
+    // Helper function to show field success
+    function showFieldSuccess(fieldName: string) {
+      const field = document.getElementById(fieldName);
+      const formGroup = field?.closest('.form-group');
+      if (formGroup) {
+        formGroup.classList.remove('error');
+        formGroup.classList.add('success');
+        const existingError = formGroup.querySelector('.error-message');
+        if (existingError) {
+          existingError.remove();
+        }
+      }
+    }
+
+    // Real-time validation functions
+    function validateFieldRealTime(fieldName: string, value: string) {
+      clearFieldError(fieldName);
+      
+      switch (fieldName) {
+        case 'fullName':
+          if (value.length === 0) return; // Don't show error for empty field initially
+          if (!/^[a-zA-Z\s]+$/.test(value)) {
+            showFieldError(fieldName, 'Name should only contain letters and spaces');
+          } else if (value.trim().split(' ').filter(name => name.length > 0).length >= 2) {
+            showFieldSuccess(fieldName);
+          }
+          break;
+          
+        case 'email':
+          if (value.length === 0) return; // Don't show error for empty field initially
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value)) {
+            showFieldError(fieldName, 'Please enter a valid email address');
+          } else {
+            showFieldSuccess(fieldName);
+          }
+          break;
+          
+        case 'whatsapp':
+          if (value.length === 0) return; // Don't show error for empty field initially
+          const cleanValue = value.replace(/[\s\-\(\)]/g, '');
+          const whatsappRegex = /^[\+]?\d{10,15}$/;
+          if (!whatsappRegex.test(cleanValue)) {
+            showFieldError(fieldName, 'Please enter a valid WhatsApp number (10-15 digits)');
+          } else {
+            showFieldSuccess(fieldName);
+          }
+          break;
+          
+        case 'role':
+          if (value) {
+            showFieldSuccess(fieldName);
+          }
+          break;
+      }
+    }
+
+    // Setup real-time validation listeners
+    const setupRealTimeValidation = () => {
+      const fields = ['fullName', 'email', 'whatsapp', 'role'];
+      
+      fields.forEach(fieldName => {
+        const field = document.getElementById(fieldName);
+        if (field) {
+          // Add input/change event listeners
+          field.addEventListener('input', (e) => {
+            const target = e.target as HTMLInputElement;
+            validateFieldRealTime(fieldName, target.value);
+          });
+          
+          field.addEventListener('blur', (e) => {
+            const target = e.target as HTMLInputElement;
+            const value = target.value.trim();
+            
+            // On blur, show required field errors if empty
+            if (!value) {
+              const fieldLabels = {
+                fullName: 'Please enter your full name',
+                email: 'Email is required',
+                whatsapp: 'WhatsApp number is required',
+                role: 'Please select your healthcare role'
+              };
+              showFieldError(fieldName, fieldLabels[fieldName as keyof typeof fieldLabels]);
+            }
+          });
+        }
+      });
+    };
+
     // Close popup on escape key
     const handleEscapeKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -196,6 +303,11 @@ export default function HomePage() {
     const countdownInterval = setInterval(updateCountdown, 1000);
     const seatInterval = setInterval(updateSeatCount, 30000); // Every 30 seconds
     setupFaqToggle();
+    
+    // Setup real-time validation with slight delay to ensure DOM is ready
+    setTimeout(() => {
+      setupRealTimeValidation();
+    }, 100);
 
     return () => {
       clearInterval(countdownInterval);
@@ -3136,6 +3248,18 @@ body {
 .error-message::before {
   content: '⚠';
   font-size: 10px;
+}
+
+/* Form Validation Success Styles */
+.form-group.success input,
+.form-group.success select {
+  border-color: var(--teal);
+  background: rgba(20, 184, 126, 0.05);
+  box-shadow: 0 0 0 2px rgba(20, 184, 126, 0.1);
+}
+
+.form-group.success input::placeholder {
+  color: #8FA3B3;
 }
 
 .popup-trust {

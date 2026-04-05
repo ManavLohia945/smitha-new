@@ -59,6 +59,74 @@ export default function HomePage() {
       }
     };
 
+    // Popup functionality
+    (window as any).openPopup = () => {
+      const popup = document.getElementById('registration-popup');
+      if (popup) {
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    (window as any).closePopup = () => {
+      const popup = document.getElementById('registration-popup');
+      if (popup) {
+        popup.style.display = 'none';
+        document.body.style.overflow = '';
+        // Reset form
+        const form = document.querySelector('.popup-form') as HTMLElement;
+        const successMessage = document.getElementById('success-message');
+        if (form) form.style.display = 'block';
+        if (successMessage) successMessage.style.display = 'none';
+      }
+    };
+
+    (window as any).handleFormSubmit = (event: Event) => {
+      event.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(event.target as HTMLFormElement);
+      const data = {
+        fullName: formData.get('fullName'),
+        email: formData.get('email'),
+        whatsapp: formData.get('whatsapp'),
+        role: formData.get('role')
+      };
+
+      // Here you would normally send data to your backend
+      console.log('Registration data:', data);
+
+      // Show success message
+      const form = document.querySelector('.popup-form') as HTMLElement;
+      const successMessage = document.getElementById('success-message');
+      if (form) form.style.display = 'none';
+      if (successMessage) successMessage.style.display = 'block';
+
+      // Optional: Close popup after 3 seconds
+      setTimeout(() => {
+        (window as any).closePopup();
+      }, 3000);
+    };
+
+    // Close popup on escape key
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        (window as any).closePopup();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscapeKey);
+
+    // Close popup on overlay click
+    const popup = document.getElementById('registration-popup');
+    if (popup) {
+      popup.addEventListener('click', (event) => {
+        if (event.target === popup) {
+          (window as any).closePopup();
+        }
+      });
+    }
+
     // Initialize
     updateCountdown();
     const countdownInterval = setInterval(updateCountdown, 1000);
@@ -68,6 +136,7 @@ export default function HomePage() {
     return () => {
       clearInterval(countdownInterval);
       clearInterval(seatInterval);
+      document.removeEventListener('keydown', handleEscapeKey);
     };
   }, []);
 
@@ -811,7 +880,7 @@ body {
   </div>
 
   <!-- CTA BUTTON -->
-  <a href="#" class="btn-cta">
+  <a href="javascript:void(0)" class="btn-cta" onclick="openPopup()">
     Grab Your FREE Seat
     <svg viewBox="0 0 18 18"><line x1="3" y1="9" x2="15" y2="9"/><polyline points="10,4 15,9 10,14"/></svg>
   </a>
@@ -889,7 +958,7 @@ body {
   </div>
 
   <!-- SECTION CTA -->
-  <a href="#" class="btn-cta who-cta">
+  <a href="javascript:void(0)" class="btn-cta who-cta" onclick="openPopup()">
     Reserve Your FREE Seat
     <svg viewBox="0 0 18 18"><line x1="3" y1="9" x2="15" y2="9"/><polyline points="10,4 15,9 10,14"/></svg>
   </a>
@@ -1983,7 +2052,7 @@ body {
     <!-- CTA STRIP -->
     <div class="change-cta-strip">
       <p class="change-cta-label">One 3-hour session. <strong>All six outcomes. FREE.</strong></p>
-      <a href="#" class="btn-cta" style="max-width:420px; background:var(--teal2);">
+      <a href="javascript:void(0)" class="btn-cta" style="max-width:420px; background:var(--teal2);" onclick="openPopup()">
         Reserve My FREE Seat
         <svg viewBox="0 0 18 18"><line x1="3" y1="9" x2="15" y2="9"/><polyline points="10,4 15,9 10,14"/></svg>
       </a>
@@ -2439,7 +2508,7 @@ body {
       </div>
 
       <div class="mentor-cta-row">
-        <a href="#" class="mentor-cta-btn">
+        <a href="javascript:void(0)" class="mentor-cta-btn" onclick="openPopup()">
           Learn From Smitha — FREE
           <svg viewBox="0 0 18 18"><line x1="3" y1="9" x2="15" y2="9"/><polyline points="10,4 15,9 10,14"/></svg>
         </a>
@@ -2818,6 +2887,252 @@ body {
   }
 }
 
+/* ══════════════════════════════════════════════
+   REGISTRATION POPUP
+══════════════════════════════════════════════ */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  animation: fadeInOverlay 0.3s ease forwards;
+}
+
+@keyframes fadeInOverlay {
+  to { opacity: 1; }
+}
+
+.popup-container {
+  background: linear-gradient(135deg, #0B1017 0%, #111B26 100%);
+  border: 1px solid rgba(20,184,126,0.2);
+  border-radius: 12px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.9) translateY(20px);
+  animation: slideInPopup 0.3s ease forwards;
+}
+
+@keyframes slideInPopup {
+  to {
+    transform: scale(1) translateY(0);
+  }
+}
+
+.popup-header {
+  position: relative;
+  padding: 24px 24px 16px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.popup-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  color: var(--teal);
+  margin-bottom: 4px;
+}
+
+.popup-subtitle {
+  font-size: 13px;
+  color: #8FA3B3;
+  font-weight: 500;
+}
+
+.popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #8FA3B3;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+  transition: color 0.2s ease;
+}
+
+.popup-close:hover {
+  color: #fff;
+}
+
+.popup-form {
+  padding: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #fff;
+  font-family: 'Barlow', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.form-group input::placeholder {
+  color: #8FA3B3;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 2px rgba(20,184,126,0.1);
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group select option {
+  background: #0B1017;
+  color: #fff;
+}
+
+.popup-submit-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--teal) 0%, #10D48E 100%);
+  color: #fff;
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 12px rgba(20,184,126,0.3);
+  margin-bottom: 16px;
+}
+
+.popup-submit-btn:hover {
+  background: linear-gradient(135deg, #10D48E 0%, var(--teal) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 16px rgba(20,184,126,0.4);
+}
+
+.popup-submit-btn:active {
+  transform: translateY(0);
+}
+
+.popup-trust {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #8FA3B3;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 500;
+}
+
+.success-message {
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.success-message h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+
+.success-message p {
+  font-size: 14px;
+  color: #8FA3B3;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.success-close-btn {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.success-close-btn:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .popup-container {
+    margin: 10px;
+    max-height: 95vh;
+  }
+  
+  .popup-header {
+    padding: 20px 20px 16px;
+  }
+  
+  .popup-title {
+    font-size: 20px;
+  }
+  
+  .popup-form {
+    padding: 20px;
+  }
+  
+  .popup-trust {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+}
+
 </style>
 
 <!-- ══════════════════════════════════════════════
@@ -2960,7 +3275,7 @@ body {
     <!-- BOTTOM CTA -->
     <div class="faq-cta-wrap">
       <p class="faq-cta-label">Still have a question? <strong>It'll get answered in the live Q&A on 19 April.</strong></p>
-      <a href="#" class="btn-cta" style="max-width:400px; background:var(--teal2);">
+      <a href="javascript:void(0)" class="btn-cta" style="max-width:400px; background:var(--teal2);" onclick="openPopup()">
         Reserve My FREE Seat
         <svg viewBox="0 0 18 18"><line x1="3" y1="9" x2="15" y2="9"/><polyline points="10,4 15,9 10,14"/></svg>
       </a>
@@ -2971,6 +3286,66 @@ body {
 </section>
 
 
+<!-- REGISTRATION POPUP -->
+<div id="registration-popup" class="popup-overlay" style="display: none;">
+  <div class="popup-container">
+    <div class="popup-header">
+      <h2 class="popup-title">Reserve Your FREE Seat</h2>
+      <p class="popup-subtitle">Healthcare Communication Webinar • April 19 • 11:00 AM IST</p>
+      <button class="popup-close" onclick="closePopup()">&times;</button>
+    </div>
+    
+    <form class="popup-form" onsubmit="handleFormSubmit(event)">
+      <div class="form-group">
+        <label for="fullName">Full Name *</label>
+        <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+      </div>
+      
+      <div class="form-group">
+        <label for="whatsapp">WhatsApp Number *</label>
+        <input type="tel" id="whatsapp" name="whatsapp" required placeholder="Enter your WhatsApp number">
+      </div>
+      
+      <div class="form-group">
+        <label for="role">Your Role in Healthcare *</label>
+        <select id="role" name="role" required>
+          <option value="">Select your role</option>
+          <option value="doctor">Doctor/Physician</option>
+          <option value="nurse">Nurse/Allied Health Professional</option>
+          <option value="admin">Healthcare Administrator/Manager</option>
+          <option value="student">Medical Student (Clinical Years)</option>
+          <option value="other">Other Healthcare Professional</option>
+        </select>
+      </div>
+      
+      <button type="submit" class="popup-submit-btn">
+        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2.5">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+        Reserve My FREE Seat
+      </button>
+      
+      <div class="popup-trust">
+        <span class="trust-item">🔒 Your data is secure</span>
+        <span class="trust-item">📧 Instant confirmation</span>
+        <span class="trust-item">💯 100% FREE</span>
+      </div>
+    </form>
+    
+    <div id="success-message" class="success-message" style="display: none;">
+      <div class="success-icon">✅</div>
+      <h3>Registration Successful!</h3>
+      <p>Check your email for webinar access details.<br>We'll also send a WhatsApp reminder.</p>
+      <button onclick="closePopup()" class="success-close-btn">Close</button>
+    </div>
+  </div>
+</div>
+
 <!-- STICKY CTA -->
 <div id="sticky-cta" class="sticky-cta">
   <div class="sticky-cta-content">
@@ -2978,7 +3353,7 @@ body {
       <span class="sticky-cta-title">FREE Healthcare Communication Webinar</span>
       <span class="sticky-cta-subtitle">April 19 • 11:00 AM IST • Only <span id="sticky-seat-count">66</span> seats left</span>
     </div>
-    <button class="sticky-cta-btn" onclick="document.querySelector('.btn-cta').scrollIntoView({behavior: 'smooth'})">
+    <button class="sticky-cta-btn" onclick="openPopup()">
       <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2.5">
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
       </svg>

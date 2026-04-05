@@ -84,22 +84,73 @@ export default function HomePage() {
     (window as any).handleFormSubmit = (event: Event) => {
       event.preventDefault();
       
+      const form = event.target as HTMLFormElement;
+      
+      // Clear previous error messages
+      document.querySelectorAll('.error-message').forEach(el => el.remove());
+      document.querySelectorAll('.form-group').forEach(el => el.classList.remove('error'));
+      
       // Get form data
-      const formData = new FormData(event.target as HTMLFormElement);
+      const formData = new FormData(form);
       const data = {
-        fullName: formData.get('fullName'),
-        email: formData.get('email'),
-        whatsapp: formData.get('whatsapp'),
-        role: formData.get('role')
+        fullName: (formData.get('fullName') as string)?.trim() || '',
+        email: (formData.get('email') as string)?.trim() || '',
+        whatsapp: (formData.get('whatsapp') as string)?.trim() || '',
+        role: (formData.get('role') as string)?.trim() || ''
       };
+
+      let hasErrors = false;
+
+      // Validate Full Name (minimum 2 words)
+      if (!data.fullName || data.fullName.length < 2) {
+        showFieldError('fullName', 'Please enter your full name');
+        hasErrors = true;
+      } else if (!/^[a-zA-Z\s]+$/.test(data.fullName)) {
+        showFieldError('fullName', 'Name should only contain letters and spaces');
+        hasErrors = true;
+      } else if (data.fullName.split(' ').filter(name => name.length > 0).length < 2) {
+        showFieldError('fullName', 'Please enter your first and last name');
+        hasErrors = true;
+      }
+
+      // Validate Email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!data.email) {
+        showFieldError('email', 'Email is required');
+        hasErrors = true;
+      } else if (!emailRegex.test(data.email)) {
+        showFieldError('email', 'Please enter a valid email address');
+        hasErrors = true;
+      }
+
+      // Validate WhatsApp (10-15 digits)
+      const whatsappRegex = /^[\+]?[\d\s\-\(\)]{10,15}$/;
+      if (!data.whatsapp) {
+        showFieldError('whatsapp', 'WhatsApp number is required');
+        hasErrors = true;
+      } else if (!whatsappRegex.test(data.whatsapp.replace(/\s/g, ''))) {
+        showFieldError('whatsapp', 'Please enter a valid WhatsApp number (10-15 digits)');
+        hasErrors = true;
+      }
+
+      // Validate Healthcare Role
+      if (!data.role) {
+        showFieldError('role', 'Please select your healthcare role');
+        hasErrors = true;
+      }
+
+      // If validation fails, don't submit
+      if (hasErrors) {
+        return;
+      }
 
       // Here you would normally send data to your backend
       console.log('Registration data:', data);
 
       // Show success message
-      const form = document.querySelector('.popup-form') as HTMLElement;
+      const formElement = document.querySelector('.popup-form') as HTMLElement;
       const successMessage = document.getElementById('success-message');
-      if (form) form.style.display = 'none';
+      if (formElement) formElement.style.display = 'none';
       if (successMessage) successMessage.style.display = 'block';
 
       // Optional: Close popup after 3 seconds
@@ -107,6 +158,19 @@ export default function HomePage() {
         (window as any).closePopup();
       }, 3000);
     };
+
+    // Helper function to show field errors
+    function showFieldError(fieldName: string, message: string) {
+      const field = document.getElementById(fieldName);
+      const formGroup = field?.closest('.form-group');
+      if (formGroup) {
+        formGroup.classList.add('error');
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.textContent = message;
+        formGroup.appendChild(errorDiv);
+      }
+    }
 
     // Close popup on escape key
     const handleEscapeKey = (event: KeyboardEvent) => {
@@ -3048,6 +3112,30 @@ body {
 
 .popup-submit-btn:active {
   transform: translateY(0);
+}
+
+/* Form Validation Error Styles */
+.form-group.error input,
+.form-group.error select {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 4px;
+  padding-left: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.error-message::before {
+  content: '⚠';
+  font-size: 10px;
 }
 
 .popup-trust {

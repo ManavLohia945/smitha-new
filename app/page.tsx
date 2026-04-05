@@ -42,12 +42,28 @@ export default function HomePage() {
       });
     };
 
+    // Seat countdown functionality
+    const updateSeatCount = () => {
+      const seatElement = document.getElementById('seat-count');
+      if (seatElement) {
+        let currentSeats = parseInt(seatElement.textContent || '66');
+        if (currentSeats > 1) {
+          currentSeats -= 1;
+          seatElement.textContent = currentSeats.toString();
+        }
+      }
+    };
+
     // Initialize
     updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    const seatInterval = setInterval(updateSeatCount, 30000); // Every 30 seconds
     setupFaqToggle();
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(countdownInterval);
+      clearInterval(seatInterval);
+    };
   }, []);
 
   const htmlContent = `<!DOCTYPE html>
@@ -804,7 +820,7 @@ body {
   <!-- SCARCITY -->
   <div class="scarcity">
     <span class="fire">🔥</span>
-    Only <span class="count-pill" id="seat-count">100</span> seats available — registration closes when full
+    Only <span class="count-pill" id="seat-count">66</span> seats available — registration closes when full
   </div>
 
 </section>
@@ -2778,7 +2794,7 @@ body {
         </div>
         <div class="faq-a">
           <div class="faq-a-inner">
-            Cohort 1 is the first group to go through CHCP. <strong>Founding cohort pricing will not be offered again.</strong> As the programme builds a track record, the price goes up — that's standard for any certification that accumulates demonstrated outcomes. The webinar is also capped at 100 seats. When it's full, registration closes.
+            Cohort 1 is the first group to go through CHCP. <strong>Founding cohort pricing will not be offered again.</strong> As the programme builds a track record, the price goes up — that's standard for any certification that accumulates demonstrated outcomes. The webinar is also capped at 66 seats. When it's full, registration closes.
           </div>
         </div>
       </div>

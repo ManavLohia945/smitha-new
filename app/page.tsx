@@ -422,7 +422,7 @@ body {
 .hero-logo {
   display: flex;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 
 .chcp-logo {
@@ -443,7 +443,7 @@ body {
     max-width: 140px;
   }
   .hero-logo {
-    margin-bottom: 20px;
+    margin-bottom: 6px;
   }
 }
 
@@ -452,7 +452,7 @@ body {
     max-width: 120px;
   }
   .hero-logo {
-    margin-bottom: 18px;
+    margin-bottom: 5px;
   }
 }
 

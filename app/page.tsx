@@ -422,14 +422,14 @@ body {
 .hero-logo {
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .chcp-logo {
-  max-width: 400px;
+  max-width: 180px;
   width: 100%;
   height: auto;
-  opacity: 0.95;
+  opacity: 0.9;
   transition: opacity 0.3s ease;
 }
 
@@ -440,13 +440,19 @@ body {
 /* Mobile responsive logo */
 @media (max-width: 768px) {
   .chcp-logo {
-    max-width: 280px;
+    max-width: 140px;
+  }
+  .hero-logo {
+    margin-bottom: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .chcp-logo {
-    max-width: 240px;
+    max-width: 120px;
+  }
+  .hero-logo {
+    margin-bottom: 18px;
   }
 }
 
@@ -990,15 +996,15 @@ body {
 
 <section class="hero">
 
+  <!-- CHCP LOGO -->
+  <div class="hero-logo">
+    <img src="/chcp-logo.png" alt="CHCP - Center for Healthcare Communication Practice" class="chcp-logo">
+  </div>
+
   <!-- TOP BADGE -->
   <div class="top-badge">
     <span class="dot"></span>
     For Doctors, Nurses &amp; Healthcare Leaders
-  </div>
-
-  <!-- CHCP LOGO -->
-  <div class="hero-logo">
-    <img src="/chcp-logo.png" alt="CHCP - Center for Healthcare Communication Practice" class="chcp-logo">
   </div>
 
   <!-- HEADLINE -->

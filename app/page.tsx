@@ -1013,12 +1013,15 @@ body {
 
   <!-- LAYER 2 — PAIN -->
   <p class="tagline-pain">
-    You know what to do — so why doesn't it always come through when it matters most? The decision that didn't change, even after you spoke up. The escalation you couldn't de-escalate. The promotion that went to someone you trained.
+    You know what to do — so why doesn't it always come through when it matters most?<br><br>
+    The moment you walked out thinking, "I should have said that differently."<br>
+    The patient you were worried about—but couldn't quite push hard enough.<br>
+    The decision that didn't change, even after you spoke up.
   </p>
 
   <!-- LAYER 3 — PROMISE -->
   <p class="tagline">
-    In 3 hours, see exactly how the CHCP system works — why communication keeps breaking down in healthcare settings, and what <em>structured authority</em> actually looks like in practice.
+    In 3 hours, experience how the CHCP system works—why communication fails even among skilled healthcare professionals, how it breaks with patients and between teams, and how to navigate hierarchy, escalation, and ownership with clarity when it matters most.
   </p>
 
   <!-- COUNTDOWN -->

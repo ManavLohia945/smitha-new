@@ -17,33 +17,33 @@ const barlow = Barlow({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://smitha-new.vercel.app'),
-  title: 'Master the Ward Round Method™ - Free Webinar with Smitha Chowdary Kankanala | April 12, 2026',
-  description: 'Join 1000+ healthcare professionals in this exclusive free webinar. Discover the Ward Round Method™ - a unique mechanism that transforms healthcare practices. Reserve your seat for April 12, 2026.',
+  title: 'Healthcare Communication Masterclass - Free Webinar with Smitha Kankanala | April 19, 2026',
+  description: 'Join healthcare professionals in this exclusive free webinar. Master healthcare communication with the CHCP system. Reserve your seat for April 19, 2026.',
   keywords: 'healthcare webinar, Ward Round Method, medical professionals, Smitha Chowdary Kankanala, healthcare transformation, medical practice growth, healthcare success, free medical webinar, April 2026',
   authors: [{ name: 'Smitha Chowdary Kankanala' }],
   creator: 'Smitha Chowdary Kankanala',
   publisher: 'Healthcare Transformation Academy',
   openGraph: {
-    title: 'Master the Ward Round Method™ - Free Healthcare Webinar | April 12, 2026',
-    description: 'Join 1000+ healthcare professionals in this exclusive free webinar. Discover the Ward Round Method™ that transforms healthcare practices.',
+    title: 'Healthcare Communication Masterclass with Smitha Kankanala | April 19, 2026',
+    description: 'Join healthcare professionals in this exclusive free webinar. Master healthcare communication with the CHCP system.',
     type: 'website',
     locale: 'en_US',
     siteName: 'Ward Round Method Webinar',
     images: [
       {
-        url: '/og-image.png',
+        url: '/thumbnail.png',
         width: 1200,
         height: 630,
-        alt: 'Ward Round Method™ Free Webinar - April 12, 2026',
+        alt: 'Healthcare Communication Masterclass with Smitha Kankanala - April 19, 2026',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Master the Ward Round Method™ - Free Healthcare Webinar',
-    description: 'Join 1000+ healthcare professionals. April 12, 2026. Reserve your free seat now!',
+    title: 'Healthcare Communication Masterclass with Smitha Kankanala',
+    description: 'Join 1000+ healthcare professionals. April 19, 2026. Reserve your free seat now!',
     creator: '@SmithaHealthcare',
-    images: ['/twitter-image.png'],
+    images: ['/thumbnail.png'],
   },
   robots: {
     index: true,

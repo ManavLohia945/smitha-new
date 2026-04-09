@@ -56,13 +56,12 @@ export default function HomePage() {
       }
     };
 
-    // Capture UTM parameters from URL on page load
+    // Capture UTM parameters from URL on page load and store for form use
     const urlParams = new URLSearchParams(window.location.search);
     (window as any)._utmParams = {
       utm_source:  urlParams.get('utm_source')  || '',
       utm_content: urlParams.get('utm_content') || '',
       utm_term:    urlParams.get('utm_term')    || '',
-      fbclid:      urlParams.get('fbclid')      || '',
     };
 
     // Popup functionality
@@ -153,21 +152,20 @@ export default function HomePage() {
       // Collect UTM params captured on page load
       const utm = (window as any)._utmParams || {};
 
-      // Build payload for Pabbly webhook
+      // Build payload — form data + UTM tracking
       const payload = {
         full_name:   data.fullName,
         email:       data.email,
         whatsapp:    data.whatsapp,
         role:        data.role,
-        utm_source:  utm.utm_source,
-        utm_content: utm.utm_content,
-        utm_term:    utm.utm_term,
-        fbclid:      utm.fbclid,
+        utm_source:  utm.utm_source  || '',
+        utm_content: utm.utm_content || '',
+        utm_term:    utm.utm_term    || '',
         page_url:    window.location.href,
         timestamp:   new Date().toISOString(),
       };
 
-      // Fire webhook — keepalive:true ensures the request survives the page navigation
+      // Fire Pabbly webhook — keepalive:true survives the page navigation
       fetch('https://connect.pabbly.com/webhook-listener/webhook/IjU3NjIwNTZhMDYzMzA0MzA1MjZiNTUzNiI_3D_pc/IjU3NjcwNTZmMDYzZTA0MzE1MjY5NTUzNzUxM2Ii_pc', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

@@ -2757,7 +2757,7 @@ body {
 
       <!-- Name over image -->
       <div class="mentor-name-block">
-        <span class="mentor-name-first">Smitha</span>
+        <span class="mentor-name-first">Smitha Chowdary</span>
         <span class="mentor-name-last">Kankanala</span>
         <div class="mentor-name-pill">
           <span class="mentor-name-pill-dot"></span>

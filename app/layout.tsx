@@ -59,6 +59,9 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code',
   },
+  other: {
+    'facebook-domain-verification': 'yw3cqxso848wbonvx6qlv6mhdkcf3t',
+  },
   alternates: {
     canonical: 'https://smitha-new.vercel.app',
   },

@@ -1104,7 +1104,7 @@ body {
           <svg viewBox="0 0 18 18"><path d="M16 13s-1-2-7-2-7 2-7 2"/><circle cx="9" cy="6" r="3"/></svg>
         </div>
         <div class="meta-label">Host</div>
-        <div class="meta-val">Smitha Chowdary</div>
+        <div class="meta-val">Smitha Chowdary Kankanala</div>
       </div>
 
     </div>
@@ -1123,11 +1123,6 @@ body {
     <svg viewBox="0 0 18 18"><line x1="3" y1="9" x2="15" y2="9"/><polyline points="10,4 15,9 10,14"/></svg>
   </a>
 
-  <!-- GUARANTEE -->
-  <div class="guarantee">
-    <svg viewBox="0 0 14 14"><path d="M7 1l1.4 2.9 3.1.5-2.3 2.2.5 3.2L7 8.2 4.3 9.8l.5-3.2L2.5 4.4l3.1-.5L7 1z"/></svg>
-    100% Money-Back Guarantee — Zero Risk
-  </div>
 
   <!-- SCARCITY -->
   <div class="scarcity">
@@ -1648,7 +1643,7 @@ body {
     </h2>
 
     <p class="cover-sub">
-      CHCP is built on 3 Pillars. In this webinar, Smitha walks you through all three pillars of the system — giving you a comprehensive overview of the complete CHCP architecture and how each pillar works together.
+      CHCP is built on 3 Pillars. In this webinar, Smitha Chowdary Kankanala walks you through all three pillars of the system — giving you a comprehensive overview of the complete CHCP architecture and how each pillar works together.
     </p>
 
     <!-- WEBINAR TIMELINE -->
@@ -1700,7 +1695,7 @@ body {
       <div class="module-wide-badge">Live Q&A</div>
       <div class="module-wide-text">
         <strong>Your Hardest Conversation — Worked Live</strong>
-        <span>Submit a real scenario from your ward or clinic before the session. Smitha will break it down using the Communication Flow Grid — live, in front of the cohort.</span>
+        <span>Submit a real scenario from your ward or clinic before the session. Smitha Chowdary Kankanala will break it down using the Communication Flow Grid — live, in front of the cohort.</span>
       </div>
       <a href="javascript:void(0)" class="module-wide-cta" onclick="openPopup()">
         Get Your Seat
@@ -2269,7 +2264,7 @@ body {
         Reserve My FREE Seat
         <svg viewBox="0 0 18 18"><line x1="3" y1="9" x2="15" y2="9"/><polyline points="10,4 15,9 10,14"/></svg>
       </a>
-      <p style="font-size:12px; color:#A0B0BC; margin-top:4px;">100% Money-Back Guarantee · Zoom · 19th April · 3:00 PM IST</p>
+      <p style="font-size:12px; color:#A0B0BC; margin-top:4px;">Live Zoom · 3 Hours · FREE · 19th April · 3:00 PM IST</p>
     </div>
 
   </div>
@@ -2832,7 +2827,7 @@ body {
         </a>
         <div class="mentor-cta-note">
           <strong>19 April · 3:00 PM IST</strong><br>
-          Live Zoom · 3 Hours · Money-Back Guarantee
+          Live Zoom · 3 Hours · FREE
         </div>
       </div>
 
@@ -3978,7 +3973,7 @@ body {
         Reserve My FREE Seat
         <svg viewBox="0 0 18 18"><line x1="3" y1="9" x2="15" y2="9"/><polyline points="10,4 15,9 10,14"/></svg>
       </a>
-      <p style="font-size:12px; color:#A0B0BC; margin-top:2px;">100% Money-Back Guarantee · 19 April · 3:00 PM IST</p>
+      <p style="font-size:12px; color:#A0B0BC; margin-top:2px;">Live Zoom · 3 Hours · FREE · 19 April · 3:00 PM IST</p>
     </div>
 
   </div>

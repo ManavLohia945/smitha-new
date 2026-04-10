@@ -1022,7 +1022,7 @@ body {
   <!-- TOP BADGE -->
   <div class="top-badge">
     <span class="dot"></span>
-    For Doctors, Nurses &amp; Healthcare Leaders
+    For Doctors, Nurses &amp; All Healthcare Professionals
   </div>
 
   <!-- HEADLINE -->
@@ -1644,7 +1644,7 @@ body {
     </h2>
 
     <p class="cover-sub">
-      CHCP is built on 3 Pillars. In this webinar, Smitha Chowdary Kankanala walks you through all three pillars of the system — giving you a comprehensive overview of the complete CHCP architecture and how each pillar works together.
+      Center for Healthcare Communication Practice is built on 3 Pillars. In this webinar, Smitha Chowdary Kankanala walks you through all three pillars of the system — giving you a comprehensive overview of the complete Certified Healthcare Professional Communication Programme architecture and how each pillar works together.
     </p>
 
     <!-- WEBINAR TIMELINE -->
@@ -1671,7 +1671,7 @@ body {
               <li>Navigate high-emotion patient conversations: risk framing, consent clarity, complication disclosure</li>
               <li>Handle conflict, hierarchy, and disciplined dissent across authority gradients</li>
               <li>Speak up safely, disagree without damaging relationships, prevent delays caused by silence or fear</li>
-              <li>Apply the Risk Framing Triangle and Authority Gradient Navigation Tool in real scenarios</li>
+              <li>Structure difficult conversations — with patients, families, and team members — instead of improvising in high-pressure moments</li>
             </ul>
           </div>
         </div>
@@ -2725,13 +2725,13 @@ body {
   <div class="mentor-ticker">
     <div class="mentor-ticker-track">
       <span class="mentor-ticker-item">CEO — Mitra Fertility <span class="mentor-ticker-sep">·</span></span>
-      <span class="mentor-ticker-item">IIM &amp; ISB Alumna <span class="mentor-ticker-sep">·</span></span>
+      <span class="mentor-ticker-item">ISB &amp; IIM Alumna <span class="mentor-ticker-sep">·</span></span>
       <span class="mentor-ticker-item">20+ Years Healthcare &amp; Client Relationship Experience <span class="mentor-ticker-sep">·</span></span>
       <span class="mentor-ticker-item">Marks &amp; Spencer Finance · British Telecom <span class="mentor-ticker-sep">·</span></span>
       <span class="mentor-ticker-item">Founder — CHCP Programme <span class="mentor-ticker-sep">·</span></span>
       <span class="mentor-ticker-item">Healthcare Communication Specialist <span class="mentor-ticker-sep">·</span></span>
       <span class="mentor-ticker-item">CEO — Mitra Fertility <span class="mentor-ticker-sep">·</span></span>
-      <span class="mentor-ticker-item">IIM &amp; ISB Alumna <span class="mentor-ticker-sep">·</span></span>
+      <span class="mentor-ticker-item">ISB &amp; IIM Alumna <span class="mentor-ticker-sep">·</span></span>
       <span class="mentor-ticker-item">20+ Years Healthcare &amp; Client Relationship Experience <span class="mentor-ticker-sep">·</span></span>
       <span class="mentor-ticker-item">Marks &amp; Spencer Finance · British Telecom <span class="mentor-ticker-sep">·</span></span>
       <span class="mentor-ticker-item">Founder — CHCP Programme <span class="mentor-ticker-sep">·</span></span>
@@ -2761,7 +2761,7 @@ body {
         <span class="mentor-name-last">Kankanala</span>
         <div class="mentor-name-pill">
           <span class="mentor-name-pill-dot"></span>
-          CEO, Mitra Fertility · IIM &amp; ISB Alumna
+          CEO, Mitra Fertility · ISB &amp; IIM Alumna
         </div>
       </div>
     </div>
@@ -2810,13 +2810,13 @@ body {
 
       <!-- Resolution -->
       <div class="mentor-resolution">
-        So she built what she couldn&apos;t find. <strong>CHCP</strong> &mdash; 8 weeks, portfolio-based, simulation-assessed. Not awareness. Not theory. <em>Applied capability that holds when it matters most.</em>
+        So she built what she couldn&apos;t find. <strong>Certified Healthcare Professional Communication Programme</strong> &mdash; 8 weeks, portfolio-based, simulation-assessed. Not awareness. Not theory. <em>Applied capability that holds when it matters most.</em>
       </div>
 
       <!-- Credential chips -->
       <div class="mentor-cred-strip">
         <span class="mentor-cred-chip"><span class="mentor-cred-chip-dot"></span>CEO, Mitra Fertility</span>
-        <span class="mentor-cred-chip"><span class="mentor-cred-chip-dot"></span>IIM &amp; ISB Alumna</span>
+        <span class="mentor-cred-chip"><span class="mentor-cred-chip-dot"></span>ISB &amp; IIM Alumna</span>
         <span class="mentor-cred-chip"><span class="mentor-cred-chip-dot"></span>20+ Years Healthcare &amp; Client Relationship Experience</span>
         <span class="mentor-cred-chip"><span class="mentor-cred-chip-dot"></span>M&amp;S Finance · British Telecom</span>
       </div>

@@ -17,7 +17,7 @@ const barlow = Barlow({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://smitha-new.vercel.app'),
+  metadataBase: new URL('https://www.chcp.co.in'),
   title: 'Healthcare Communication Masterclass - Free Webinar with Smitha Kankanala | April 19, 2026',
   description: 'Join healthcare professionals in this exclusive free webinar. Master healthcare communication with the CHCP system. Reserve your seat for April 19, 2026.',
   keywords: 'healthcare webinar, Ward Round Method, medical professionals, Smitha Chowdary Kankanala, healthcare transformation, medical practice growth, healthcare success, free medical webinar, April 2026',
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     'facebook-domain-verification': 'yw3cqxso848wbonvx6qlv6mhdkcf3t',
   },
   alternates: {
-    canonical: 'https://smitha-new.vercel.app',
+    canonical: 'https://www.chcp.co.in',
   },
   category: 'Healthcare Education',
 }

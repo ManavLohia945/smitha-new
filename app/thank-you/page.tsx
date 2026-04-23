@@ -46,7 +46,7 @@ export default function ThankYouPage() {
         </p>
 
         <div className={`${s.eventBadge} ${s.reveal}`}>
-          <span>📅</span> 19th April 2026 · <span>3:00 PM IST · Live Zoom</span>
+          <span>📅</span> 3rd May 2026 · <span>3:00 PM IST · Live Zoom</span>
         </div>
 
         <p className={`${s.oneStep} ${s.reveal}`}>One last step — join the community:</p>
@@ -78,7 +78,7 @@ export default function ThankYouPage() {
             <div className={s.stepNumber}>2</div>
             <div className={s.stepTitle}>Save the Date</div>
             <p className={s.stepBody}>
-              Block April 19 at 3:00 PM IST on your calendar right now. This is a live session — there is no recording.
+              Block May 3 at 3:00 PM IST on your calendar right now. This is a live session — there is no recording.
             </p>
           </div>
           <div className={`${s.stepCard} ${s.reveal}`}>

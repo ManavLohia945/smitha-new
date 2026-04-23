@@ -18,33 +18,33 @@ const barlow = Barlow({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.chcp.co.in'),
-  title: 'Healthcare Communication Masterclass - Free Webinar with Smitha Kankanala | April 19, 2026',
-  description: 'Join healthcare professionals in this exclusive free webinar. Master healthcare communication with the CHCP system. Reserve your seat for April 19, 2026.',
+  title: 'Healthcare Communication Masterclass - Free Webinar with Smitha Kankanala | May 3, 2026',
+  description: 'Join healthcare professionals in this exclusive free webinar. Master healthcare communication with the CHCP system. Reserve your seat for May 3, 2026.',
   keywords: 'healthcare webinar, Ward Round Method, medical professionals, Smitha Chowdary Kankanala, healthcare transformation, medical practice growth, healthcare success, free medical webinar, April 2026',
   authors: [{ name: 'Smitha Chowdary Kankanala' }],
   creator: 'Smitha Chowdary Kankanala',
   publisher: 'Healthcare Transformation Academy',
   openGraph: {
-    title: 'Healthcare Communication Masterclass with Smitha Kankanala | April 19, 2026',
+    title: 'Healthcare Communication Masterclass with Smitha Kankanala | May 3, 2026',
     description: 'Join healthcare professionals in this exclusive free webinar. Master healthcare communication with the CHCP system.',
     type: 'website',
     locale: 'en_US',
     siteName: 'Ward Round Method Webinar',
     images: [
       {
-        url: '/thumbnail_3.png?v=20260410-1',
+        url: '/thumbnail_4.png?v=20260410-1',
         width: 1200,
         height: 630,
-        alt: 'Healthcare Communication Masterclass with Smitha Kankanala - April 19, 2026',
+        alt: 'Healthcare Communication Masterclass with Smitha Kankanala - May 3, 2026',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Healthcare Communication Masterclass with Smitha Kankanala',
-    description: 'Join 1000+ healthcare professionals. April 19, 2026. Reserve your free seat now!',
+    description: 'Join 1000+ healthcare professionals. May 3, 2026. Reserve your free seat now!',
     creator: '@SmithaHealthcare',
-    images: ['/thumbnail_3.png?v=20260410-1'],
+    images: ['/thumbnail_4.png?v=20260410-1'],
   },
   robots: {
     index: true,

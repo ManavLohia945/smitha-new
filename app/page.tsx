@@ -101,7 +101,9 @@ export default function HomePage() {
         fullName: (formData.get('fullName') as string)?.trim() || '',
         email: (formData.get('email') as string)?.trim() || '',
         whatsapp: (formData.get('whatsapp') as string)?.trim() || '',
-        role: (formData.get('role') as string)?.trim() || ''
+        city: (formData.get('city') as string)?.trim() || '',
+        role: (formData.get('role') as string)?.trim() || '',
+        experience: (formData.get('experience') as string)?.trim() || ''
       };
 
       let hasErrors = false;
@@ -138,9 +140,21 @@ export default function HomePage() {
         hasErrors = true;
       }
 
+      // Validate City
+      if (!data.city) {
+        showFieldError('city', 'Please enter your city name');
+        hasErrors = true;
+      }
+
       // Validate Healthcare Role
       if (!data.role) {
         showFieldError('role', 'Please select your healthcare role');
+        hasErrors = true;
+      }
+
+      // Validate Years of Experience
+      if (!data.experience) {
+        showFieldError('experience', 'Please select your years of experience');
         hasErrors = true;
       }
 
@@ -157,7 +171,9 @@ export default function HomePage() {
         full_name:   data.fullName,
         email:       data.email,
         whatsapp:    data.whatsapp,
+        city:        data.city,
         role:        data.role,
+        experience:  data.experience,
         utm_source:  utm.utm_source  || '',
         utm_content: utm.utm_content || '',
         utm_term:    utm.utm_term    || '',
@@ -176,8 +192,9 @@ export default function HomePage() {
       // Signal Lead to Meta Pixel before navigating away
       if ((window as any).fbq) (window as any).fbq('track', 'Lead');
 
-      // Redirect to thank-you page
-      window.location.href = '/thank-you';
+      // Redirect senior-experience users to thank-you2 for separate pixel tracking
+      const seniorExperience = data.experience === '5-10' || data.experience === '10+';
+      window.location.href = seniorExperience ? '/thank-you2' : '/thank-you';
     };
 
     // Helper function to show field errors
@@ -258,7 +275,22 @@ export default function HomePage() {
           }
           break;
           
+        case 'city':
+          if (value.length === 0) return;
+          if (value.length < 2) {
+            showFieldError(fieldName, 'Please enter your city name');
+          } else {
+            showFieldSuccess(fieldName);
+          }
+          break;
+
         case 'role':
+          if (value) {
+            showFieldSuccess(fieldName);
+          }
+          break;
+
+        case 'experience':
           if (value) {
             showFieldSuccess(fieldName);
           }
@@ -268,7 +300,7 @@ export default function HomePage() {
 
     // Setup real-time validation listeners
     const setupRealTimeValidation = () => {
-      const fields = ['fullName', 'email', 'whatsapp', 'role'];
+      const fields = ['fullName', 'email', 'whatsapp', 'city', 'role', 'experience'];
       
       fields.forEach(fieldName => {
         const field = document.getElementById(fieldName);
@@ -289,7 +321,9 @@ export default function HomePage() {
                 fullName: 'Please enter your full name',
                 email: 'Email is required',
                 whatsapp: 'WhatsApp number is required',
-                role: 'Please select your healthcare role'
+                city: 'Please enter your city name',
+                role: 'Please select your healthcare role',
+                experience: 'Please select your years of experience'
               };
               showFieldError(fieldName, fieldLabels[fieldName as keyof typeof fieldLabels]);
             }
@@ -4008,7 +4042,12 @@ body {
         <label for="whatsapp">WhatsApp Number *</label>
         <input type="tel" id="whatsapp" name="whatsapp" required placeholder="Enter your WhatsApp number">
       </div>
-      
+
+      <div class="form-group">
+        <label for="city">City *</label>
+        <input type="text" id="city" name="city" required placeholder="Enter your city name">
+      </div>
+
       <div class="form-group">
         <label for="role">Your Role in Healthcare *</label>
         <select id="role" name="role" required>
@@ -4018,6 +4057,18 @@ body {
           <option value="admin">Healthcare Administrator/Manager</option>
           <option value="student">Medical Student (Clinical Years)</option>
           <option value="other">Other Healthcare Professional</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="experience">Years of Experience *</label>
+        <select id="experience" name="experience" required>
+          <option value="">Select your years of experience</option>
+          <option value="beginner">Beginner</option>
+          <option value="1-3">1-3 yrs</option>
+          <option value="3-5">3-5 yrs</option>
+          <option value="5-10">5-10 yrs</option>
+          <option value="10+">10+ yrs</option>
         </select>
       </div>
       
